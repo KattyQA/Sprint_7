@@ -17,6 +17,7 @@ public class OrderParamTests {
 
     private int expectedStatus;
     private Order order;
+    private int track;
 
 
     public OrderParamTests(int expectedStatus, Order order){
@@ -34,20 +35,20 @@ public class OrderParamTests {
     @Parameterized.Parameters(name = "Тестовые данные: {0}, {1}")
     public static Object[][] getTestData() {
         return new Object[][]{
-                {SC_CREATED, OrderGenerator.randomOrder()},
-                {SC_CREATED, OrderGenerator.randomOrderWithBlackColor()},
-                {SC_CREATED, OrderGenerator.randomOrderWithGreyColor()},
-                {SC_CREATED, OrderGenerator.randomOrderWithBlackAndGreyColor()},
+                {SC_CREATED, OrderGenerator.defaultOrder()},
+                {SC_CREATED, OrderGenerator.OrderWithBlackColor()},
+                {SC_CREATED, OrderGenerator.OrderWithGreyColor()},
+                {SC_CREATED, OrderGenerator.OrderWithBlackAndGreyColor()},
         };
     }
 
     @Test
     @DisplayName("Создание заказа")
-    @Description("Создание заказа с данными, статус ответа 200")
+    @Description("Создание заказа с данными, статус ответа 200, ответ содержит поле track")
     public void createOrder() {
         OrderClient orderClient = new OrderClient();
-
         Response create = orderClient.create(order);
+        track = create.path("track");
         assertEquals("Неверный статус код", expectedStatus, create.statusCode());
 
     }

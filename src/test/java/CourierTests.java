@@ -70,11 +70,13 @@ public class CourierTests {
         Courier courier2 = randomCourier();
         CourierClient courierClient = new CourierClient();
         Response response = courierClient.create(courier1);
+        assertEquals("Неверный статус код", SC_CREATED,response.statusCode());
+        Response loginResponse = courierClient.login(fromCourier(courier1));
+        id = loginResponse.path("id");
         Response response2 = courierClient.create(courier2);
-
         message = response2.path("message");
         assertEquals("Неверное сообщение об ошибке","Этот логин уже используется.", message);
-
+        assertEquals("Неверный статус код", SC_CONFLICT, response2.statusCode());
 
 
     }
@@ -123,8 +125,6 @@ public class CourierTests {
 
     @After
     public void tearDown() {
-        // Нужно реализовать ;)
-        // courierClient.delete(id);
         CourierClient courierClient = new CourierClient();
         Response delete = courierClient.delete(id);
 

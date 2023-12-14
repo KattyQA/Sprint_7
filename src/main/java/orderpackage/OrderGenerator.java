@@ -1,5 +1,4 @@
 package orderpackage;
-import orderpackage.Order;
 
 public class OrderGenerator {
     private String firstName;
@@ -13,21 +12,21 @@ public class OrderGenerator {
     private String[] color;
 
 
-    public static Order randomOrder(){
+    public static Order defaultOrder(){
         return new Order("1", "2", "3", "4", "675435", 4, "5", "comment", new String[]{null});
 
     }
-    public static Order randomOrderWithGreyColor(){
+    public static Order OrderWithGreyColor(){
         return new Order("2", "3", "4", "5", "6754351", 1, "6", "comment1", new String[]{"grey"});
 
     }
 
-    public static Order randomOrderWithBlackColor(){
+    public static Order OrderWithBlackColor(){
         return new Order("3", "4", "5", "6", "6754352", 2, "1", "comment2", new String[]{"black"});
 
     }
 
-    public static Order randomOrderWithBlackAndGreyColor(){
+    public static Order OrderWithBlackAndGreyColor(){
         return new Order("3", "4", "5", "6", "6754352", 2, "1", "comment2", new String[]{"black", "grey"});
 
     }

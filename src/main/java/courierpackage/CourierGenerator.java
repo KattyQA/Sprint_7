@@ -3,7 +3,7 @@ package courierpackage;
 public class CourierGenerator {
     public static Courier randomCourier(){
         return new Courier()
-                .withLogin("fa1235")
+                .withLogin("ssss12235")
                 .withPassword("fa2315")
                 .withFirstName("fa2141");
     }
@@ -20,7 +20,7 @@ public class CourierGenerator {
     }
     public static Courier courierWithoutLogin(){
         return new Courier()
-                .withLogin(null)
+                .withLogin("")
                 .withPassword("0020902")
                 .withFirstName("GTTRR");
     }
@@ -28,7 +28,7 @@ public class CourierGenerator {
     public static Courier courierWithoutPassword(){
         return new Courier()
                 .withLogin("0020902")
-                .withPassword(null)
+                .withPassword("")
                 .withFirstName("frryrty");
     }
 
